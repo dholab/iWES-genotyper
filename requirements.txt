@@ -1,0 +1,12 @@
+biopython>=1.73
+pandas>=1.1.5
+numpy>=1.19.2
+pysam>=0.15.1
+sklearn
+matplotlib
+scipy
+openpyxl
+# minimap2>=2.17
+# samtools>=1.12
+# histlab>=1.12
+# bbmap>=38.24

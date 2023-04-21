@@ -1,0 +1,11 @@
+.idea/*
+.idea/workspace.xml
+.idea
+.DS_Store
+*/.DS_Store
+config/.DS_Store
+config/Mamu/.DS_Store
+config/Mafa/.DS_Store
+venv/*
+venv
+READ_ME.md
