@@ -503,6 +503,9 @@ samtools:
 BBMap:
 - Bushnell, Brian. BBMap: A Fast, Accurate, Splice-Aware Aligner. United States: N. p., 2014.
 
+muscle:
+- Edgar, R.C. Nucleic Acids Res 32(5), 1792-97.
+
 ### Python packages
 Pandas:
 ```

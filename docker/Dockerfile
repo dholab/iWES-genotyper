@@ -3,7 +3,9 @@ FROM openjdk:17-slim-bullseye
 # https://sourceforge.net/projects/bbmap/files/BBMap_39.01.tar.gz/download
 #download minimap2-2.24_x64-linux.tar.bz2 and place in directory of this Dockerfile
 # https://github.com/lh3/minimap2/releases/download/v2.24/minimap2-2.24_x64-linux.tar.bz2
-
+#download extract the exectuablemuscle5.1.linux_intel64 and place in directory of this Dockerfile
+# https://github.com/rcedgar/muscle/releases/tag/5.1.0
+# https://github.com/rcedgar/muscle/releases/download/5.1.0/muscle5.1.linux_intel64
 COPY BBMap_39.01.tar.gz ./
 COPY minimap2-2.24_x64-linux.tar.bz2 ./
 
@@ -19,6 +21,8 @@ RUN apt-get install -y python3-pip samtools bcftools
 RUN pip3 install --no-cache-dir biopython==1.76 pyfasta pandas pysam
 RUN pip3 install --no-cache-dir sklearn numpy matplotlib scipy openpyxl
 RUN ln -s /minimap2-2.24_x64-linux/minimap2 /usr/bin/minimap2
+COPY muscle5.1.linux_intel64 ./
+RUN ln -s /muscle5.1.linux_intel64 /usr/bin/muscle
 
 ENTRYPOINT ["/bin/bash"]
 

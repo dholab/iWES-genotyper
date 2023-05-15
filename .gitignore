@@ -9,3 +9,12 @@ config/Mafa/.DS_Store
 venv/*
 venv
 READ_ME.md
+/publication/test.py
+/publication/plot_read_overlay.py
+/docker/muscle3.8.31_i86linux64.tar.gz
+/docker/muscle3.8.31_i86linux64
+/docker/muscle5.1.macos_intel64
+/docker/minimap2-2.24_x64-linux.tar.bz2
+/docker/BBMap_39.01.tar.gz
+/publication/run_publication_scriipts.sh
+/docker/muscle5.1.linux_intel64
