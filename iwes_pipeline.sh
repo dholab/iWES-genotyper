@@ -95,6 +95,7 @@ case "${create_reference_files}" in ([Tt])
 
   echo "python3 ${script_dir}/modules/create_hash.py --ref_dir=${ref_dir}";
   python3 ${script_dir}/modules/create_hash.py --ref_dir="${ref_dir}" --read_length=${read_length};
+  # exit
 esac
 
 ## Align files

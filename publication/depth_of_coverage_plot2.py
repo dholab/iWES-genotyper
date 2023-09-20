@@ -60,14 +60,16 @@ sample = args.sample
 print(f'Opening file {in_path}')
 df_plot = pd.read_csv(in_path)
 df_plot_i = df_plot[df_plot['gs_id'] == sample]
-
-df_plot_i = df_plot_i[['COMPARING_POSITION', 'DEPTH_ADJ', 'ALLELE']]
+df_plot_i = df_plot_i[df_plot_i['ALLELE'] != 'Mamu-A1_028_01_01_01-gen']
+# df_plot_i.to_csv(join_path(out_dir, f'{prefix}_{sample}_depth_of_coverage_plot.csv'), index=False)
+df_plot_i = df_plot_i[['COMPARING_POSITION', 'DEPTH_ADJ', 'DEPTH', 'ALLELE']]
 # df_plot_i.rename(columns={'COMPARING_POSITION': 'POSITION', 'DEPTH_ADJ': 'DEPTH'})
-sns.lineplot(data=df_plot_i, x="COMPARING_POSITION", y="DEPTH_ADJ", hue="ALLELE")
+
+sns.lineplot(data=df_plot_i, x="COMPARING_POSITION", y="DEPTH", hue="ALLELE")
 plt.legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0)
 plt.ylim((-1,185))
 plt.gcf().set_size_inches(10, 5)
 print('Saving plot')
-savepath=join_path(out_dir, f'{prefix}_{sample}_depth_of_coverage_plot.svg')
+savepath=join_path(out_dir, f'{prefix}_{sample}_depth_of_coverage_plot_noadj.svg')
 plt.savefig(savepath, dpi=200)
 print(f'Completed plot: {savepath}')

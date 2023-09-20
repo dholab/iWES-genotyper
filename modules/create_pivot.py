@@ -397,18 +397,19 @@ df_haplo_pivot = pd.DataFrame()
 if os.path.exists(haplotype_lookup):
     # open the haplotype_lookup csv
     df_haplo_call = pd.read_csv(haplotype_lookup)
-    df_haplo_ready.rename(columns={'allele': 'bait_allele'}, inplace=True)
+    # df_haplo_ready.rename(columns={'allele': 'allele_short' ,'bait_allele': 'allele'}, inplace=True, errors='ignore')
+    df_haplo_call.rename(columns={'allele': 'allele_short', 'bait_allele': 'allele'}, inplace=True, errors='ignore')
     # merge the lookup to each call
-    df_haplo_merge = df_haplo_call.merge(df_haplo_ready[['bait_allele', 'gs_id']], on=['bait_allele'], how='inner')
-
-
+    df_haplo_merge = df_haplo_call.merge(df_haplo_ready[['allele', 'gs_id']], on=['allele'], how='inner')
     df_haplo_merge = df_haplo_merge[
         ['HAPLOTYPE_CALL', 'PREFIX', 'TYPE', 'allele', 'gs_id', 'CALL_COUNT']].drop_duplicates()
     # find the counts of each call to figure out if all the allele types are covered
     df_haplo_merge['CALL_GSID_COUNT'] = df_haplo_merge.groupby(['HAPLOTYPE_CALL', 'PREFIX', 'TYPE', 'gs_id'])[
         'allele'].transform('count')
+
     # retain only the hapotypes that are fully covered (all alleles are present to make tha hpalotype call)
     df_haplo_pass = df_haplo_merge[df_haplo_merge['CALL_COUNT'] == df_haplo_merge['CALL_GSID_COUNT']]
+
     # drop the duplicates and remove the allele names, we just care about the haplotype call
     df_haplo_pass = df_haplo_pass[['HAPLOTYPE_CALL', 'PREFIX', 'TYPE', 'gs_id', 'CALL_COUNT']].drop_duplicates()
     # figure out how many haplotypes are call per group (1: Homozygous, 2: Heterozygous, >2 = Too many Haplotypes)
@@ -429,6 +430,7 @@ if os.path.exists(haplotype_lookup):
     # Get the type for each haplotype (Group 1 and Group 2) and match the format of the haplotype_to_header pivot_list
     df_haplo_pass['TYPE'] = ['{0} {1}'.format(x.replace('_', ' '), int(y)) for x, y in
                              zip(df_haplo_pass['TYPE'], df_haplo_pass['rank'])]
+
     # figure out what only report the first 2 haplotypes as too many haplotypes may have 3 and it would be redundant
     df_haplo_pass = df_haplo_pass[df_haplo_pass['rank'] < 3]
     # any thing that is blank (No called haplotypes) will be a fill value of No Haplotype

@@ -18,3 +18,6 @@ READ_ME.md
 /docker/BBMap_39.01.tar.gz
 /publication/run_publication_scriipts.sh
 /docker/muscle5.1.linux_intel64
+publication/depth_of_coverage_plot2.py
+publication/depth_of_coverage_plot.py
+publication/chimera_plot.py

@@ -103,8 +103,8 @@ ${script_dir}/iwes_pipeline.sh \
   --project_name 103126 \
   --animal_lookup_path ${run_dir}/run_1_animal_lookup.csv \
   --create_reference_files True \
-  --db_path "${input_ref_dir}/gen_exon_rem_2023_03_06.fasta ${input_ref_dir}/Mamu_MHC-II_Ex2_447_Seq_renamed_6Mar23.fasta ${input_ref_dir}/26128_ipd-mhc-mamu-2021-07-09.miseq.RWv4.fasta" \
-  --db_ext "gen exon miseq" \
+  --db_path "${input_ref_dir}/Mamu_MHC-genomic.fasta ${input_ref_dir}/Mamu_MHC-exon2.fasta ${input_ref_dir}/Mamu_MHC-miseq.fasta" \
+  --db_ext "ipd exon miseq" \
   --haplo_fasta ${input_ref_dir}/26128_ipd-mhc-mamu-2021-07-09.miseq.RWv4.fasta \
   --haplotype_json_path ${input_ref_dir}/haplotype_lookup.json \
   --script_dir ${script_dir} \

@@ -76,7 +76,7 @@ start = args.start
 end = args.end
 allele_list = args.allele_list
 le = LabelEncoder()
-
+print(allele_list)
 filelist = os.listdir(in_dir)
 filelist = [os.path.join(in_dir, x) for x in filelist if
             not x.startswith('._') and x.endswith('_expanded_maps-gen.csv')]
