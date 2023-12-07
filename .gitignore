@@ -6,6 +6,11 @@
 config/.DS_Store
 config/Mamu/.DS_Store
 config/Mafa/.DS_Store
+config/.DS_Store
+config_mamu_class1_2
+config_mcm_class1_2
+config_mamu_class1_2/*
+config_mcm_class1_2/*
 venv/*
 venv
 READ_ME.md
@@ -21,3 +26,4 @@ READ_ME.md
 publication/depth_of_coverage_plot2.py
 publication/depth_of_coverage_plot.py
 publication/chimera_plot.py
+/config_mamu_class1_2/

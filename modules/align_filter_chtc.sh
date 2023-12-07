@@ -120,11 +120,13 @@ rm -rf ipd_ref_matrix
 rm -f ${ipd_ref_hash}
 rm -f ${ref_fasta}
 rm -f main_exon.py
+rm -f align_main_exon_chtc.sh
 rm -f ${ref_fasta}.fai
 rm -f ${in_1}
 rm -f ${in_2}
 
 tar -cvf ${file_prefix}.tar \
+depth_all \
 ${file_prefix}.depth_all.csv \
 ${file_prefix}_norm_median_all.csv \
 ${file_prefix}_read_ct.csv \

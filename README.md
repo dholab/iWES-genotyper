@@ -473,7 +473,9 @@ echo "python3 ${serpent_script_dir}/main.py \
 - "--prefix": (str) optional, default='': an optional prefix to add to the intermediate files
 - "--threshold": (int) optional, default=27, the depth of coverage criteria to use based on the maximum position for each allele.
   - This should be higher than the depth of coverage threshold in align_filter_chtc.sh or filter_alignments.py (default=3).
-  - 
+  - This should be higher than the depth of coverage threshold in align_filter_chtc.sh or filter_alignments.py (default=3).
+  - 27 was chosen after trying other defaults and getting more and less over calls for our KIR and NKG2 sets in our publications (pending).  
+  - You will need to adjust this value to determine what is best for your set.
 ```shell
 # example of using two outputted runs
 python3 ~/iwes_genotyping_v2/modules/create_mask_ranges.py \
@@ -492,6 +494,12 @@ python3 ~/iwes_genotyping_v2/modules/create_mask_ranges.py \
 --ref_dir /Volumes/T8/iwes/Mafa_nkg2_mask \
 --threshold 27
 ```
+## How to apply mask ranges
+- First run the main  work flow with your set. Back up files as needed.
+- Next run the above code based on where your files are located
+- Make sure the generate mask range file (i.e. mask_range.csv) is in your ref_dir
+- Finally, rerun the main workflow with the mask range file in your ref_dir and it should pick up automatically.
+
 # Acknowledgments:
 ## Software:
 minimap2:

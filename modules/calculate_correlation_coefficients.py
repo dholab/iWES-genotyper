@@ -116,7 +116,7 @@ if len(in_dirs) > 0:
 
         df_summary_i['SAMPLE_MEDIAN_DEPTH'] = df_summary_i.groupby(['SAMPLE_NUM'])['DEPTH_median'].transform('median')
         df_summary_i['FILE_NUM'] = file_num
-        df_summary_i.to_csv(os.path.join(out_dir, f'bay34_depth_summary_{file_num}.csv'), index=False)
+        df_summary_i.to_csv(os.path.join(out_dir, f'all_depth_summary_{file_num}.csv'), index=False)
         print('Summary Complete  file_num: {0} of {1}'.format(i, len(file_list)))
         df_summary = pd.concat([df_summary, df_summary_i], ignore_index=True)
 for summary_path_i in summary_paths:

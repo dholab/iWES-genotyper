@@ -50,8 +50,6 @@ def parse_process_arrays_args(parser: ArgumentParser):
                         required=False)
 
 
-
-
 def get_fasta_seq_dict(fasta_path):
     fasta_seq_dict = {}
     genome_fasta_open = pysam.Fastafile(fasta_path)
@@ -136,7 +134,7 @@ class_list = ['CD94-gen',
 #     df_max = pd.concat([df_max, df_max_i], ignore_index=True)
 #     df_max_i.to_csv(os.path.join(result_dir, f'{class_i}_{suffix}_depth_max_allele.csv.gz'), index=False)
 df_max = df.groupby(['ALLELE', 'POSITION'])['DEPTH'].agg(max).reset_index()
-df_max.to_csv(os.path.join(result_dir, '{prefix}depth_max_allele.csv'), index=False)
+df_max.to_csv(os.path.join(result_dir, f'{prefix}depth_max_allele.csv'), index=False)
 
 
 # df_max = pd.read_csv(os.path.join(result_dir, '{suffix}_depth_max_allele.csv'))

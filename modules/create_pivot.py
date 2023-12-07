@@ -71,6 +71,10 @@ def parse_process_arrays_args(parser: ArgumentParser):
                         default=None,
                         help='extensions to add at end of the headers to descriminate files (i.e. -e gen exon miseq',
                         required=False)
+    parser.add_argument('--max_gap',
+                        default=120,
+                        type=int,
+                        required=False)
 
 
 def get_process_arrays_args():
@@ -99,6 +103,7 @@ confidence_coeff_json = args.confidence_coeff_json
 depth_threshold = args.depth_threshold
 db_ext = args.db_ext
 conf_group = args.conf_group
+max_gap = args.max_gap
 ################################################################
 # Replace non declared files with relative paths to ref_dir #
 ################################################################
@@ -228,7 +233,7 @@ df_read_ct = pd.read_csv(os.path.join(out_dir, '{0}_read_ct.csv'.format(project_
 # a customer ids may not be unqiue and we use an internal unique identifier
 df_read_ct['gs_id'] = df_read_ct['gs_id'].astype(str)
 
-df_norm_median = df_norm_median[df_norm_median['MAX_GAP'] < 120]
+df_norm_median = df_norm_median[df_norm_median['MAX_GAP'] < max_gap]
 # Filter for the genomic data of the median file
 df_dict = {}
 

@@ -284,6 +284,7 @@ def get_depth_and_filter(bam_filepath,
                            header=None,
                            names=['ALLELE', 'POSITION', 'DEPTH'])
     if output_depth_all:
+        os.makedirs(os.path.join(out_dir, 'depth_all'), exist_ok=True)
         depth_dir = os.path.join(out_dir, 'depth_all', '{0}.depth_all{1}.csv'.format(sample_i, db_ext_i))
         df_depth.to_csv(depth_dir, sep=',', index=False)
     df_depth['MAX_POSITION'] = df_depth.groupby(['ALLELE'])['POSITION'].transform('max')
