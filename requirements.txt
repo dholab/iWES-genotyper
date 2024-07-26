@@ -2,7 +2,7 @@ biopython>=1.73
 pandas>=1.1.5
 numpy>=1.19.2
 pysam>=0.15.1
-sklearn
+scikit-learn
 matplotlib
 scipy
 openpyxl
